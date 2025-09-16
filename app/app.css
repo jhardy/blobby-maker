@@ -1,8 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --unit: 4px;
+  --size1: calc(var(--unit) * 1);
+  --size2: calc(var(--unit) * 2);
+  --size3: calc(var(--unit) * 3);
+  --size4: calc(var(--unit) * 4);
+  --size5: calc(var(--unit) * 5);
+  --size6: calc(var(--unit) * 6);
+  --size8: calc(var(--unit) * 8);
+  --size10: calc(var(--unit) * 10);
+
+  --stroke-width: 5px;
+  --stroke-color: #480b38;
 }
 
 html,
@@ -11,5 +25,236 @@ body {
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
+  }
+}
+
+.builder-wrapper {
+  width: max-content;
+  padding: var(--size4);
+  padding-top: 70px;
+  justify-content: center;
+}
+
+.panels {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size4);
+}
+
+.panel {
+  display: none;
+  grid-template-columns: repeat(6, minmax(72px, 1fr));
+  gap: var(--size2);
+
+  &.active {
+    display: grid;
+  }
+}
+
+.option-button {
+  display: flex;
+  border: solid 1px #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 48px;
+
+  &[aria-pressed="true"] {
+    border-color: blue;
+  }
+
+  & svg {
+    width: 24px;
+    height: auto;
+  }
+
+  & .eyes svg {
+    width: 12px;
+  }
+}
+
+.eyes {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  gap: var(--size3);
+}
+
+.panel-control {
+  display: flex;
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 2px;
+  & button {
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    flex-grow: 1;
+
+    &[aria-selected="true"] {
+      background-color: #fff;
+    }
+  }
+}
+
+.blobby-swatch {
+  width: 32px;
+  height: 32px;
+  border: solid 1.25px var(--stroke-color);
+  border-radius: 100%;
+
+  &.dawn {
+    background: linear-gradient(
+      310deg,
+      #bca2f3 9%,
+      #ff7aa2 55.26%,
+      #f3d4a2 89.74%
+    );
+  }
+
+  &.gold {
+    background: linear-gradient(
+      310deg,
+      #feb13a 3.2%,
+      #feb13a 12.62%,
+      #fce69e 85.84%
+    );
+  }
+
+  &.breeze {
+    background: linear-gradient(310deg, #7c86d1 9%, #7affd9 72.27%);
+  }
+
+  &.purple {
+    background: linear-gradient(310deg, #9b67e4 9%, #e1b4fa 72.27%);
+  }
+
+  &.lime {
+    background: linear-gradient(310deg, #49da01 9%, #caff7a 66.06%);
+  }
+
+  &.red {
+    background: linear-gradient(310deg, #f90000 9%, #fd9d9d 89.74%);
+  }
+}
+
+.blobby-preview {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  .color {
+    width: 150px;
+    height: 150px;
+
+    & .blobby-swatch {
+      border-width: 6px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  & .face {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--mouth-space, var(--size2));
+    transform: translateX(calc(-50% + var(--face-x, 0px)))
+      translateY(calc(-50% + var(--face-y, 0px)))
+      rotate(var(--face-rotation, 0deg));
+    & .eyes {
+      gap: var(--eye-space, var(--size3));
+    }
+  }
+
+  & .mouth {
+    margin-top: -4px;
+  }
+
+  & .hat {
+  }
+
+  & .hat-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+
+    & .ball-cap {
+      transform: translate(20px, 20px);
+    }
+
+    & .beanie {
+      transform: translate(-5px, 31px);
+    }
+
+    & .beret {
+      transform: translate(-10px, 10px);
+    }
+
+    & .bucket-hat {
+      transform: translate(0px, 40px);
+    }
+
+    & .captain {
+      transform: translate(0px, 10px);
+    }
+
+    & .chefs-hat {
+      transform: translate(-3px, 12px);
+    }
+
+    & .cowboy-hat {
+      transform: translate(-3px, 10px);
+    }
+
+    & .hard-hat {
+      transform: translate(2px, 15px);
+    }
+
+    & .jester-hat {
+    }
+
+    & .pirate {
+      transform: translate(-8px, 4px);
+    }
+
+    & .top-hat {
+      transform: translate(-5px, 0px);
+    }
+
+    & .wizard-hat {
+      transform: translate(3px, -15px);
+    }
+
+    & .party-hat {
+      transform: translate(-10px, -24px);
+    }
+
+    & .crown {
+      transform: translate(-7px, -13px);
+    }
+  }
+}
+
+.face-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--size6);
+}
+
+.control-label {
+  display: inline-block;
+  width: 16px;
+  font-size: 12px;
+  margin-right: 8px;
+
+  svg {
+    width: 16px;
+    height: 16px;
   }
 }

@@ -1,0 +1,32 @@
+export const AwwEyes = () => (
+  <div className="eyes aww">
+    <span className="left-eye">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="10.6269" cy="10.5589" r="10.5283" transform="rotate(-15 10.6269 10.5589)" fill="#480B38"/>
+<ellipse cx="15.5607" cy="9.49484" rx="2.31342" ry="2.29677" transform="rotate(-43.3646 15.5607 9.49484)" fill="#FEFEFE"/>
+<ellipse cx="11.1217" cy="13.773" rx="1.15466" ry="1.14635" transform="rotate(-43.3646 11.1217 13.773)" fill="#FEFEFE"/>
+<ellipse cx="7.34642" cy="7.53919" rx="5.26417" ry="3.34993" transform="rotate(-51.0419 7.34642 7.53919)" fill="#FEFEFE"/>
+      </svg>
+    </span>
+    <span className="right-eye">
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="11.291" cy="10.5589" r="10.5283" transform="rotate(-15 11.291 10.5589)" fill="#480B38"/>
+<ellipse cx="16.2247" cy="9.49484" rx="2.31342" ry="2.29677" transform="rotate(-43.3646 16.2247 9.49484)" fill="#FEFEFE"/>
+<ellipse cx="11.7848" cy="13.774" rx="1.15466" ry="1.14635" transform="rotate(-43.3646 11.7848 13.774)" fill="#FEFEFE"/>
+<ellipse cx="8.01048" cy="7.54016" rx="5.26417" ry="3.34993" transform="rotate(-51.0419 8.01048 7.54016)" fill="#FEFEFE"/>
+      </svg>
+    </span>
+  </div>
+);
