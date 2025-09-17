@@ -19,6 +19,84 @@
   --stroke-color: #480b38;
 }
 
+/* Hat color defaults
+.ball-cap {
+  --hat-color-1: #3e3030;
+  --hat-color-2: #000000;
+}
+
+.beanie {
+  --hat-color-1: #ff6b6b;
+  --hat-color-2: #ffffff;
+}
+
+.beret {
+  --hat-color-1: #1e3a8a;
+  --hat-color-2: #000000;
+}
+
+.bucket-hat {
+  --hat-color-1: #90ee90;
+  --hat-color-2: #228b22;
+}
+
+.captain {
+  --hat-color-1: #000080;
+  --hat-color-2: #000000;
+  --hat-color-3: #ffd700;
+}
+
+.chefs-hat {
+  --hat-color-1: #ffffff;
+  --hat-color-2: #f0f0f0;
+}
+
+.cowboy-hat {
+  --hat-color-1: #8b4513;
+  --hat-color-2: #654321;
+}
+
+.hard-hat {
+  --hat-color-1: #ffd700;
+  --hat-color-2: #ff4500;
+}
+
+.jester-hat {
+  --hat-color-1: #ff1493;
+  --hat-color-2: #9400d3;
+  --hat-color-3: #ffd700;
+}
+
+.pirate {
+  --hat-color-1: #000000;
+  --hat-color-2: #ffffff;
+  --hat-color-3: #8b0000;
+}
+
+.top-hat {
+  --hat-color-1: #332e2e;
+  --hat-color-2: #000000;
+}
+
+.crown {
+  --hat-color-1: #ffd700;
+  --hat-color-2: #ff0000;
+  --hat-color-3: #0000ff;
+  --hat-color-4: #00ff00;
+}
+
+.party-hat {
+  --hat-color-1: #ff69b4;
+  --hat-color-2: #ffd700;
+  --hat-color-3: #ff1493;
+}
+
+.wizard-hat {
+  --hat-color-1: #191970;
+  --hat-color-2: #ffd700;
+  --hat-color-3: #c0c0c0;
+} */
+
 html,
 body {
   @apply bg-white dark:bg-gray-950;
@@ -256,5 +334,56 @@ body {
   svg {
     width: 16px;
     height: 16px;
+  }
+}
+
+.hat-color-controls {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  h3 {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .color-control {
+    margin-bottom: 12px;
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      span {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      input[type="color"] {
+        width: 60px;
+        height: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        cursor: pointer;
+        background: transparent;
+
+        &::-webkit-color-swatch-wrapper {
+          padding: 2px;
+        }
+
+        &::-webkit-color-swatch {
+          border-radius: 3px;
+          border: none;
+        }
+      }
+    }
   }
 }
