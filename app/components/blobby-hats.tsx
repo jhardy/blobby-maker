@@ -13,15 +13,15 @@ export const BlobbyHats: React.FC<BlobbyHatsProps> = ({
 }) => {
   const hatName = hatNames[hatIndex] || "";
   // Merge hat colors into style
-  const wrapperStyle: React.CSSProperties = {
-    ...Object.entries(hatColors).reduce((acc, [key, value]) => {
-      acc[key as any] = value;
-      return acc;
-    }, {} as React.CSSProperties),
-  };
+  // const wrapperStyle: React.CSSProperties & Record<string, any> = {
+  //   ...Object.entries(hatColors).reduce((acc, [key, value]) => {
+  //     acc[key] = value;
+  //     return acc;
+  //   }, {} as Record<string, any>),
+  // };
 
   return (
-    <div className={`hat-wrapper ${hatName}`} style={wrapperStyle} tabIndex={0}>
+    <div className={`hat-wrapper ${hatName}`} tabIndex={0}>
       {hatComponents[hatIndex]}
     </div>
   );

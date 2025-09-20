@@ -95,7 +95,7 @@ export const eyeComponents = [
   <DizzyEyes />,
   // <HeartsEyes />,
   <LashesEyes />,
-  <LinesEyes />,
+  // <LinesEyes />,
   // <StarsEyes />,
   <SusEyes />,
   <WorriedEyes />,

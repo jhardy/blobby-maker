@@ -11,6 +11,7 @@ import { IconSpacingHorizontal } from "./icons/spacing-horizontal";
 import { IconSpacingVertical } from "./icons/spacing-vertical";
 import { IconRotate } from "./icons/rotate";
 import { hatConfigs, hatNames } from "~/data/hat-configs";
+import { ColorPickerSwatch } from "./color-picker-swatch";
 
 type ActiveBlobbyProps = {
   colorIndex: number;
@@ -38,7 +39,7 @@ export const BlobbyPreview = ({
     const config = hatConfigs[hatName];
     if (config) {
       const initialColors: Record<string, string> = {};
-      config.colors.forEach(color => {
+      config.colors.forEach((color) => {
         initialColors[color.cssVar] = color.default;
       });
       setHatColors(initialColors);
@@ -46,7 +47,7 @@ export const BlobbyPreview = ({
   }, [hatIndex]);
 
   const handleColorChange = (cssVar: string, value: string) => {
-    setHatColors(prev => ({ ...prev, [cssVar]: value }));
+    setHatColors((prev) => ({ ...prev, [cssVar]: value }));
   };
 
   const faceStyle: React.CSSProperties = {
@@ -57,8 +58,18 @@ export const BlobbyPreview = ({
     ["--face-y" as any]: `${facePos.y * 40}px`,
   };
 
+  const wrapperStyle: React.CSSProperties & Record<string, any> = {
+    ...Object.entries(hatColors).reduce(
+      (acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      },
+      {} as Record<string, any>
+    ),
+  };
+
   return (
-    <div className="blobby-maker-controls">
+    <div className="blobby-maker-controls" style={wrapperStyle}>
       <div className="blobby-preview">
         <div className="color">{colorSwatches[colorIndex]}</div>
         <div className="face" style={faceStyle}>
@@ -120,16 +131,13 @@ export const BlobbyPreview = ({
         <div className="hat-color-controls">
           <h3>Hat Colors</h3>
           {hatConfigs[hatNames[hatIndex]]?.colors.map((color) => (
-            <div key={color.cssVar} className="color-control">
-              <label>
-                <span>{color.name}</span>
-                <input
-                  type="color"
-                  value={hatColors[color.cssVar] || color.default}
-                  onChange={(e) => handleColorChange(color.cssVar, e.target.value)}
-                />
-              </label>
-            </div>
+            <ColorPickerSwatch
+              key={color.cssVar}
+              id={`hat-color-${color.cssVar}`}
+              color={hatColors[color.cssVar] || color.default}
+              onChange={(value) => handleColorChange(color.cssVar, value)}
+              label={color.name}
+            />
           ))}
         </div>
       )}

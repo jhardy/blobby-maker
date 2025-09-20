@@ -8,8 +8,18 @@ export const XEyes = () => (
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M1.91699 2.83301L17.2503 18.1663" stroke="#480B38" strokeWidth="3.83333" strokeLinecap="round"/>
-        <path d="M17.25 2.83301L1.91667 18.1663" stroke="#480B38" strokeWidth="3.83333" strokeLinecap="round"/>
+        <path
+          d="M1.91699 2.83301L17.2503 18.1663"
+          stroke="#480B38"
+          strokeWidth="var(--stroke-width)"
+          strokeLinecap="round"
+        />
+        <path
+          d="M17.25 2.83301L1.91667 18.1663"
+          stroke="#480B38"
+          strokeWidth="var(--stroke-width)"
+          strokeLinecap="round"
+        />
       </svg>
     </span>
     <span className="right-eye">
@@ -20,8 +30,18 @@ export const XEyes = () => (
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M2.7373 2.32764L18.0706 17.661" stroke="#480B38" strokeWidth="3.83333" strokeLinecap="round"/>
-        <path d="M18.0703 2.32764L2.73698 17.661" stroke="#480B38" strokeWidth="3.83333" strokeLinecap="round"/>
+        <path
+          d="M2.7373 2.32764L18.0706 17.661"
+          stroke="#480B38"
+          strokeWidth="var(--stroke-width)"
+          strokeLinecap="round"
+        />
+        <path
+          d="M18.0703 2.32764L2.73698 17.661"
+          stroke="#480B38"
+          strokeWidth="var(--stroke-width)"
+          strokeLinecap="round"
+        />
       </svg>
     </span>
   </div>

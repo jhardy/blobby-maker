@@ -354,36 +354,72 @@ body {
   }
 
   .color-control {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 
     label {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      flex-direction: column;
+      gap: 8px;
 
       span {
         font-size: 13px;
         color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
       }
 
-      input[type="color"] {
-        width: 60px;
-        height: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 4px;
-        cursor: pointer;
-        background: transparent;
-
-        &::-webkit-color-swatch-wrapper {
-          padding: 2px;
+      .color-picker-wrapper {
+        .react-colorful {
+          width: 150px;
+          height: 150px;
         }
 
-        &::-webkit-color-swatch {
-          border-radius: 3px;
-          border: none;
+        .react-colorful__saturation {
+          border-radius: 4px;
+        }
+
+        .react-colorful__hue,
+        .react-colorful__alpha {
+          height: 12px;
+          border-radius: 6px;
+        }
+
+        .react-colorful__pointer {
+          width: 16px;
+          height: 16px;
         }
       }
     }
   }
+}
+
+#my-popover {
+  background: #333;
+  color: white;
+  font-weight: 400;
+  padding: 1rem;
+  max-width: 200px;
+  line-height: 1.4;
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.swatch {
+  width: 16px;
+  height: 16px;
+  border: solid 1px #ccc;
+  background-color: var(--swatchColor);
+}
+
+.swatch-button {
+}
+
+.color-popover {
+  background-color: #fff;
+  padding: 20px;
+  position: absolute;
+  position-area: top;
 }

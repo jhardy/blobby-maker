@@ -57,7 +57,7 @@ export const hatConfigs: Record<string, HatColorConfig> = {
   "hard-hat": {
     colors: [
       { name: "Hat Color", default: "#FDCE4A", cssVar: "--hat-color-1" },
-      { name: "SOutline Color", default: "#480B38)", cssVar: "--hat-color-2" },
+      { name: "SOutline Color", default: "#480B38", cssVar: "--hat-color-2" },
     ],
   },
   "jester-hat": {
