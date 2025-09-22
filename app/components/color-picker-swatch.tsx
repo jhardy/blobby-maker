@@ -18,7 +18,6 @@ export const ColorPickerSwatch = ({
 
   return (
     <div className="color-control">
-      {label && <label>{label}</label>}
       <div className="color-picker-wrapper">
         <button
           id={`${id}-button`}
@@ -26,6 +25,7 @@ export const ColorPickerSwatch = ({
           style={{ anchorName: `--${id}` } as React.CSSProperties}
           popoverTarget={`${id}-popover`}
           type="button"
+          aria-label={label}
         >
           <div className="swatch" style={{ backgroundColor: color }} />
         </button>

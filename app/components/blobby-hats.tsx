@@ -5,11 +5,13 @@ import { hatNames } from "~/data/hat-configs";
 type BlobbyHatsProps = {
   hatIndex: number;
   hatColors?: Record<string, string>;
+  hatFlipped: boolean;
 };
 
 export const BlobbyHats: React.FC<BlobbyHatsProps> = ({
   hatIndex,
   hatColors = {},
+  hatFlipped,
 }) => {
   const hatName = hatNames[hatIndex] || "";
   // Merge hat colors into style
@@ -21,7 +23,10 @@ export const BlobbyHats: React.FC<BlobbyHatsProps> = ({
   // };
 
   return (
-    <div className={`hat-wrapper ${hatName}`} tabIndex={0}>
+    <div
+      className={`hat-wrapper ${hatName} ${hatFlipped && "flipped"}`}
+      tabIndex={0}
+    >
       {hatComponents[hatIndex]}
     </div>
   );

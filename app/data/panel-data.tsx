@@ -8,12 +8,15 @@ import { DefaultEyes } from "~/components/eyes/default";
 import { DizzyEyes } from "~/components/eyes/dizzy";
 import { EyelidsDownEyes } from "~/components/eyes/eyelidsdown";
 import { EyelidsUpEyes } from "~/components/eyes/eyelidsup";
+import { GlassesEyes } from "~/components/eyes/glasses";
 import { HeartsEyes } from "~/components/eyes/hearts";
 import { JoyEyes } from "~/components/eyes/joy";
 import { LashesEyes } from "~/components/eyes/lashes";
 import { LinesEyes } from "~/components/eyes/lines";
+import { PointyGlassesEyes } from "~/components/eyes/pointy-glasses";
 import { PupilsEyes } from "~/components/eyes/pupils";
 import { StarsEyes } from "~/components/eyes/stars";
+import { SunglassesEyes } from "~/components/eyes/sunglasses";
 import { SusEyes } from "~/components/eyes/sus";
 import { WorriedEyes } from "~/components/eyes/worried";
 import { XEyes } from "~/components/eyes/x";
@@ -56,6 +59,12 @@ import {
   PurpleSwatch,
   RedSwatch,
 } from "~/components/swatches/swatches";
+import { EyeShadow } from "~/components/face-features/eye-shadow";
+import { Freckles } from "~/components/face-features/freckles";
+import { Mole } from "~/components/face-features/mole";
+import { RosyCheeks } from "~/components/face-features/rosy-cheeks";
+import { Stash } from "~/components/face-features/stash";
+import { Tears } from "~/components/face-features/tears";
 
 export const colorSwatches = [
   <DawnSwatch />,
@@ -64,6 +73,15 @@ export const colorSwatches = [
   <PurpleSwatch />,
   <LimeSwatch />,
   <RedSwatch />,
+];
+
+export const blobbySwatchNames = [
+  "dawn",
+  "gold",
+  "breeze",
+  "purple",
+  "lime",
+  "red",
 ];
 
 export const mouthComponents = [
@@ -90,7 +108,7 @@ export const eyeComponents = [
   <EyelidsDownEyes />,
   <AngryEyes />,
   <PupilsEyes />,
-  <AmusedEyes />,
+  // <AmusedEyes />,
   <ConfusedEyes />,
   <DizzyEyes />,
   // <HeartsEyes />,
@@ -102,6 +120,9 @@ export const eyeComponents = [
   <XEyes />,
   <BlibbyEyes />,
   <BloopyEyes />,
+  <GlassesEyes />,
+  <SunglassesEyes />,
+  <PointyGlassesEyes />,
 ];
 
 export const hatComponents = [
@@ -125,4 +146,14 @@ export const hatComponents = [
   <Crown />,
   <PartyHat />,
   <WizardHat />,
+];
+
+export const faceFeatureComponents = [
+  <div className="empty-option"></div>,
+  <EyeShadow />,
+  <Freckles />,
+  <Mole />,
+  <RosyCheeks />,
+  <Stash />,
+  <Tears />,
 ];

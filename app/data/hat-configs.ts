@@ -31,7 +31,8 @@ export const hatConfigs: Record<string, HatColorConfig> = {
   "bucket-hat": {
     colors: [
       { name: "Main Color", default: "#B2B087", cssVar: "--hat-color-1" },
-      { name: "Band Color", default: "#000000", cssVar: "--hat-color-2" },
+      { name: "Highlight Color", default: "#ffffff", cssVar: "--hat-color-2" },
+      { name: "Outline Color", default: "#000000", cssVar: "--hat-color-3" },
     ],
   },
   captain: {
@@ -90,9 +91,11 @@ export const hatConfigs: Record<string, HatColorConfig> = {
   },
   "party-hat": {
     colors: [
-      { name: "Base Color", default: "#FBA7ED", cssVar: "--hat-color-1" },
-      { name: "Stripe Color", default: "#3FBCE9", cssVar: "--hat-color-2" },
-      { name: "Pom Pom Color", default: "#F8E57E", cssVar: "--hat-color-3" },
+      { name: "Stripe 1 Color", default: "#FBA7ED", cssVar: "--hat-color-1" },
+      { name: "Stripe 2 Color", default: "#3FBCE9", cssVar: "--hat-color-2" },
+      { name: "Stripe 3 Color", default: "#F8E57E", cssVar: "--hat-color-3" },
+      { name: "Pom Pom Color", default: "#FBA7ED", cssVar: "--hat-color-4" },
+      { name: "Outline Color", default: "#480B38", cssVar: "--hat-color-5" },
     ],
   },
   "wizard-hat": {
