@@ -15,6 +15,7 @@ import {
 import { BlobbyPreview } from "~/components/blobby-preview";
 import { BlobbyControls } from "~/components/blobby-controls";
 import { hatConfigs, hatNames } from "~/data/hat-configs";
+import { DownloadButton } from "~/components/download-button";
 
 export const Welcome = () => {
   const [activePanel, setActivePanel] = useState<PanelTypes>("eyes");
@@ -68,6 +69,7 @@ export const Welcome = () => {
             facePos={facePos}
             hatColors={hatColors}
           />
+          <DownloadButton />
           <div className="panels">
             <PanelControl
               onPanelChange={handlePanelChange}
