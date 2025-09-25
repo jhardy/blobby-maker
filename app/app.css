@@ -489,6 +489,29 @@ body {
 
   h3 {
     font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.remove-custom-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+
+  &:hover {
+    background: #ff5252;
   }
 }
 
@@ -524,5 +547,82 @@ body {
   .download-icon {
     width: 20px;
     height: 20px;
+  }
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.2s ease;
+
+  &.upload-option {
+    background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    border: solid 1px #16a34a;
+    color: white;
+    padding: 0;
+    width: 72px;
+    height: 48px;
+    flex-direction: column;
+
+    span {
+      font-size: 10px;
+    }
+  }
+
+  &:hover:not(:disabled) {
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .upload-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.custom-option {
+  border: solid 2px #4ade80 !important;
+  background: #f0fdf4;
+
+  &[aria-pressed="true"] {
+    border-color: #16a34a !important;
+    background: #dcfce7;
+  }
+}
+
+.custom-eyes,
+.custom-mouth,
+.custom-hat-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-hat-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -20%);
+}
+
+
+.custom-overlay-item {
+  transition: filter 0.2s;
+
+  &.active {
+    filter: drop-shadow(0 0 4px #667eea);
   }
 }

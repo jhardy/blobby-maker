@@ -1,18 +1,18 @@
-# Welcome to React Router!
+# Blobby Maker 🎨
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Create and customize your own unique blobby characters with this interactive character creator!
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/jhardy/blobby-maker)
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- 👀 **Customizable Eyes** - Choose from 20+ eye styles
+- 👄 **Expressive Mouths** - Pick from various mouth expressions
+- 🎩 **Stylish Hats** - Add and color-customize different hats
+- 🎨 **Custom Uploads** - Upload your own images for eyes, mouths, hats, or decorations
+- 🎯 **Precise Positioning** - Position, scale, and rotate custom items anywhere
+- 💾 **Download as PNG** - Export your creation as a high-quality image
+- 🌈 **Color Options** - Multiple gradient body colors and customizable hat colors
 
 ## Getting Started
 
