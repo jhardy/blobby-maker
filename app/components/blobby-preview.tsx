@@ -6,6 +6,9 @@ import {
 } from "~/data/panel-data";
 import React from "react";
 import { BlobbyHats } from "./blobby-hats";
+import { CustomImage } from "./custom-image";
+import type { CustomItem } from "~/utils/custom-items-manager";
+import { CustomOverlay, type PositionedCustomItem } from "./custom-overlay";
 
 type BlobbyPreviewProps = {
   colorIndex: number;
@@ -18,6 +21,12 @@ type BlobbyPreviewProps = {
   faceRotation?: number;
   facePos?: { x: number; y: number };
   hatColors?: Record<string, string>;
+  customEye?: CustomItem | null;
+  customMouth?: CustomItem | null;
+  customHat?: CustomItem | null;
+  positionedCustomItems?: PositionedCustomItem[];
+  activeCustomItemId?: string | null;
+  onCustomItemClick?: (id: string) => void;
 };
 
 export const BlobbyPreview = ({
@@ -31,6 +40,12 @@ export const BlobbyPreview = ({
   faceRotation = 0,
   facePos = { x: 0, y: 0 },
   hatColors = {},
+  customEye = null,
+  customMouth = null,
+  customHat = null,
+  positionedCustomItems = [],
+  activeCustomItemId = null,
+  onCustomItemClick,
 }: BlobbyPreviewProps) => {
   const faceStyle: React.CSSProperties = {
     ["--eye-space" as any]: `${eyeSpace}px`,
@@ -56,14 +71,38 @@ export const BlobbyPreview = ({
         <div className="color">{colorSwatches[colorIndex]}</div>
         <div className="face" style={faceStyle}>
           {/* {faceFeatureComponents[faceFeatureIndex]} */}
-          {eyeComponents[eyeIndex]}
-          {mouthComponents[mouthIndex]}
+          {customEye ? (
+            <div className="eyes custom-eyes">
+              <CustomImage dataUrl={customEye.dataUrl} size={60} />
+            </div>
+          ) : (
+            eyeIndex >= 0 && eyeComponents[eyeIndex]
+          )}
+          {customMouth ? (
+            <div className="mouth custom-mouth">
+              <CustomImage dataUrl={customMouth.dataUrl} size={40} />
+            </div>
+          ) : (
+            mouthIndex >= 0 && mouthComponents[mouthIndex]
+          )}
         </div>
-        {/* Hat is now handled by BlobbyHats */}
-        <BlobbyHats
-          hatIndex={hatIndex}
-          hatColors={hatColors}
-          hatFlipped={false}
+        {/* Hat is now handled by BlobbyHats or custom hat */}
+        {customHat ? (
+          <div className="hat-wrapper custom-hat-wrapper">
+            <CustomImage dataUrl={customHat.dataUrl} size={100} />
+          </div>
+        ) : (
+          <BlobbyHats
+            hatIndex={hatIndex}
+            hatColors={hatColors}
+            hatFlipped={false}
+          />
+        )}
+        {/* Custom positioned overlay items */}
+        <CustomOverlay
+          items={positionedCustomItems}
+          activeItemId={activeCustomItemId}
+          onItemClick={onCustomItemClick}
         />
       </div>
     </div>

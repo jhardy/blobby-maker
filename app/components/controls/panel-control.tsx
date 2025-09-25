@@ -1,4 +1,4 @@
-export type PanelTypes = "eyes" | "mouths" | "hats" | "features";
+export type PanelTypes = "eyes" | "mouths" | "hats" | "features" | "custom";
 
 export const PanelControl = ({
   onPanelChange,
@@ -29,6 +29,12 @@ export const PanelControl = ({
         aria-selected={activePanel === "hats"}
       >
         Hats
+      </button>
+      <button
+        onClick={() => handleButtonClick("custom")}
+        aria-selected={activePanel === "custom"}
+      >
+        Custom
       </button>
       {/* <button
         onClick={() => handleButtonClick("features")}

@@ -6,6 +6,7 @@ import { IconSpacingHorizontal } from "./icons/spacing-horizontal";
 import { IconSpacingVertical } from "./icons/spacing-vertical";
 import { IconRotate } from "./icons/rotate";
 import { ColorPickerSwatch } from "./color-picker-swatch";
+import type { PositionedCustomItem } from "./custom-overlay";
 
 type BlobbyControlsProps = {
   colorIndex: number;
@@ -21,6 +22,12 @@ type BlobbyControlsProps = {
   onFaceRotationChange: (value: number) => void;
   onFacePosChange: (x: number, y: number) => void;
   onHatColorChange: (cssVar: string, value: string) => void;
+  // Custom item controls
+  activeCustomItem?: PositionedCustomItem | null;
+  onCustomPositionChange?: (x: number, y: number) => void;
+  onCustomScaleChange?: (scale: number) => void;
+  onCustomRotationChange?: (rotation: number) => void;
+  onRemoveCustomItem?: (id: string) => void;
 };
 
 export const BlobbyControls = ({
@@ -37,6 +44,11 @@ export const BlobbyControls = ({
   onFaceRotationChange,
   onFacePosChange,
   onHatColorChange,
+  activeCustomItem,
+  onCustomPositionChange,
+  onCustomScaleChange,
+  onCustomRotationChange,
+  onRemoveCustomItem,
 }: BlobbyControlsProps) => {
   return (
     <div className="control-items">
@@ -90,6 +102,59 @@ export const BlobbyControls = ({
           />
         </div>
       </div>
+
+      {/* Custom Item Controls */}
+      {activeCustomItem && (
+        <div className="customize-section">
+          <h3>
+            Custom Item
+            <button
+              className="remove-custom-btn"
+              onClick={() => onRemoveCustomItem?.(activeCustomItem.id)}
+              aria-label="Remove custom item"
+            >
+              ×
+            </button>
+          </h3>
+          <div className="face-controls">
+            <div className="eye-mouth-controls">
+              <label>
+                <span className="control-label">
+                  <IconSpacingHorizontal />
+                </span>
+                <input
+                  type="range"
+                  min={0.5}
+                  max={2}
+                  step={0.1}
+                  value={activeCustomItem.scale}
+                  onChange={(e) => onCustomScaleChange?.(Number(e.target.value))}
+                />
+              </label>
+              <br />
+              <label>
+                <span className="control-label">
+                  <IconRotate />
+                </span>
+                <input
+                  type="range"
+                  min={-180}
+                  max={180}
+                  step={5}
+                  value={activeCustomItem.rotation}
+                  onChange={(e) => onCustomRotationChange?.(Number(e.target.value))}
+                />
+              </label>
+            </div>
+            <JoystickControl
+              radius={40}
+              knobRadius={8}
+              value={activeCustomItem.position}
+              onChange={(x, y) => onCustomPositionChange?.(x, y)}
+            />
+          </div>
+        </div>
+      )}
 
       <div className="customize-section">
         <h3>Body</h3>
