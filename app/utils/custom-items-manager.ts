@@ -11,9 +11,17 @@ export interface CustomItem {
 class CustomItemsManager {
   private storageKey = "blobby-custom-items";
   private items: Map<string, CustomItem> = new Map();
+  private isInitialized = false;
 
   constructor() {
-    this.loadFromStorage();
+    // Don't load from storage in constructor - wait for explicit init
+  }
+
+  private ensureInitialized() {
+    if (!this.isInitialized && typeof window !== "undefined") {
+      this.loadFromStorage();
+      this.isInitialized = true;
+    }
   }
 
   private loadFromStorage() {
@@ -42,6 +50,7 @@ class CustomItemsManager {
   }
 
   async addItem(file: File, type: UploadType): Promise<CustomItem> {
+    this.ensureInitialized();
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
 
@@ -71,28 +80,32 @@ class CustomItemsManager {
   }
 
   getItemsByType(type: UploadType): CustomItem[] {
+    this.ensureInitialized();
     return Array.from(this.items.values())
       .filter(item => item.type === type)
       .sort((a, b) => b.timestamp - a.timestamp);
   }
 
   removeItem(id: string) {
+    this.ensureInitialized();
     this.items.delete(id);
     this.saveToStorage();
   }
 
   clearAll() {
+    this.ensureInitialized();
     this.items.clear();
     this.saveToStorage();
   }
 }
 
-// Singleton instance
+// Singleton instance - defer creation
 let instance: CustomItemsManager | null = null;
 
 export function getCustomItemsManager(): CustomItemsManager {
-  if (!instance) {
+  if (!instance && typeof window !== "undefined") {
     instance = new CustomItemsManager();
   }
-  return instance;
+  // Always return an instance, even if it's a temporary one for SSR
+  return instance || new CustomItemsManager();
 }

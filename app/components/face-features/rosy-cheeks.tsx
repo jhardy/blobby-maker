@@ -14,7 +14,7 @@ export const RosyCheeks = () => (
           rx="6.46154"
           ry="6"
           fill="#F757E1"
-          fill-opacity="0.5"
+          fillOpacity="0.5"
         />
       </svg>
     </div>
@@ -32,7 +32,7 @@ export const RosyCheeks = () => (
           rx="6.46154"
           ry="6"
           fill="#F757E1"
-          fill-opacity="0.5"
+          fillOpacity="0.5"
         />
       </svg>
     </div>

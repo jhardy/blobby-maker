@@ -24,12 +24,12 @@ export const GlassesEyes = () => (
       <path
         d="M57 27.9997C57 19.5699 73 19.4992 73 27.9995"
         stroke="#480B38"
-        stroke-width="4"
+        strokeWidth="4"
       />
-      <circle cx="36" cy="25" r="21.5" stroke="#480B38" stroke-width="5" />
-      <circle cx="94.001" cy="24" r="21.5" stroke="#480B38" stroke-width="5" />
-      <path d="M16 22.9995L0 22.9995" stroke="#480B38" stroke-width="4" />
-      <path d="M130 22.9995L114 22.9995" stroke="#480B38" stroke-width="4" />
+      <circle cx="36" cy="25" r="21.5" stroke="#480B38" strokeWidth="5" />
+      <circle cx="94.001" cy="24" r="21.5" stroke="#480B38" strokeWidth="5" />
+      <path d="M16 22.9995L0 22.9995" stroke="#480B38" strokeWidth="4" />
+      <path d="M130 22.9995L114 22.9995" stroke="#480B38" strokeWidth="4" />
     </svg>
   </div>
 );
