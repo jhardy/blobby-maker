@@ -14,7 +14,7 @@ export const EyeShadow = () => (
           cy="13.5"
           r="13.5"
           fill="#52BDFF"
-          fill-opacity="0.7"
+          fillOpacity="0.7"
         />
       </svg>
     </div>
@@ -32,7 +32,7 @@ export const EyeShadow = () => (
           cy="13.5"
           r="13.5"
           fill="#52BDFF"
-          fill-opacity="0.7"
+          fillOpacity="0.7"
         />
       </svg>
     </div>

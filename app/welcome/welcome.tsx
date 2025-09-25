@@ -52,14 +52,17 @@ export const Welcome = () => {
 
   // Load custom items on mount
   useEffect(() => {
-    const manager = getCustomItemsManager();
-    setCustomItems({
-      eyes: manager.getItemsByType("eyes"),
-      mouths: manager.getItemsByType("mouths"),
-      hats: manager.getItemsByType("hats"),
-      features: manager.getItemsByType("features"),
-      custom: manager.getItemsByType("custom"),
-    });
+    // Only access localStorage after component mount
+    if (typeof window !== "undefined") {
+      const manager = getCustomItemsManager();
+      setCustomItems({
+        eyes: manager.getItemsByType("eyes"),
+        mouths: manager.getItemsByType("mouths"),
+        hats: manager.getItemsByType("hats"),
+        features: manager.getItemsByType("features"),
+        custom: manager.getItemsByType("custom"),
+      });
+    }
   }, []);
 
   // Initialize hat colors when hat changes
