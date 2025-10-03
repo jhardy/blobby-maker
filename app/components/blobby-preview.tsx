@@ -70,7 +70,7 @@ export const BlobbyPreview = ({
       <div className="blobby-preview" style={wrapperStyle}>
         <div className="color">{colorSwatches[colorIndex]}</div>
         <div className="face" style={faceStyle}>
-          {/* {faceFeatureComponents[faceFeatureIndex]} */}
+          {faceFeatureComponents[faceFeatureIndex]}
           {customEye ? (
             <div className="eyes custom-eyes">
               <CustomImage dataUrl={customEye.dataUrl} size={60} />
@@ -98,6 +98,7 @@ export const BlobbyPreview = ({
             hatFlipped={false}
           />
         )}
+
         {/* Custom positioned overlay items */}
         <CustomOverlay
           items={positionedCustomItems}

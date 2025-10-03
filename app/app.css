@@ -169,9 +169,14 @@ body {
   & .eyes svg {
     width: 12px;
   }
+
+  & .face-feature svg {
+    width: 12px;
+  }
 }
 
 .eyes {
+  anchor-name: --eye-anchor;
   display: flex;
   flex-direction: row;
   align-items: end;
@@ -180,12 +185,15 @@ body {
   z-index: 2;
 }
 
+.mouth {
+  anchor-name: --mouth-anchor;
+}
+
 .face-feature {
-  position: absolute;
   display: flex;
   flex-direction: row;
-  gap: calc(var(--eye-space, var(--size3)) * 1.35);
-  z-index: 1;
+  justify-content: space-between;
+  gap: var(--size5);
 }
 
 .panel-control {
@@ -348,16 +356,46 @@ body {
   }
 
   & .face-feature {
+    position-anchor: --eye-anchor;
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    /* gap: calc(var(--eye-space, var(--size3)) * 1.1); */
+    justify-content: space-between;
+    z-index: 1;
+
     &.eye-shadow {
-      transform: translateY(-15px);
+      position-area: top center;
+      width: calc(anchor-size(width) * 1.25);
+      transform: translate(-8px, 10px);
     }
 
     &.freckles {
-      transform: translateY(18px);
+      transform: translate(-10px, 0px);
+      position-area: center bottom;
+      width: calc(anchor-size(width) * 1.3);
     }
 
     &.rosy-cheeks {
-      transform: translateY(20px);
+      transform: translateY(8px);
+      width: anchor-size(width);
+
+      position-area: center bottom;
+
+      & .left-feature {
+        transform: translateX(-8px);
+      }
+
+      & .right-feature {
+        transform: translateX(8px);
+      }
+    }
+
+    &.stash {
+      position-anchor: --mouth-anchor;
+      position-area: top center;
+      transform: translateY(8px);
     }
   }
 }
@@ -519,16 +557,16 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: transparent;
+  border: solid 1px rgba(0, 0, 0, 0.15);
+  color: #000;
   font-weight: 500;
-  padding: 12px 20px;
-  border-radius: 10px;
-  border: none;
+  justify-content: center;
+  padding: 8px 12px 8px 8px;
+  border-radius: 100px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 12px;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
@@ -617,7 +655,6 @@ body {
   top: 0;
   transform: translate(-50%, -20%);
 }
-
 
 .custom-overlay-item {
   transition: filter 0.2s;

@@ -30,18 +30,18 @@ export const PanelControl = ({
       >
         Hats
       </button>
-      <button
+      {/* <button
         onClick={() => handleButtonClick("custom")}
         aria-selected={activePanel === "custom"}
       >
         Custom
-      </button>
-      {/* <button
+      </button> */}
+      <button
         onClick={() => handleButtonClick("features")}
         aria-selected={activePanel === "features"}
       >
         Features
-      </button> */}
+      </button>
     </div>
   );
 };

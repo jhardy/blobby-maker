@@ -7,6 +7,7 @@ import { IconSpacingVertical } from "./icons/spacing-vertical";
 import { IconRotate } from "./icons/rotate";
 import { ColorPickerSwatch } from "./color-picker-swatch";
 import type { PositionedCustomItem } from "./custom-overlay";
+import { DownloadButton } from "./download-button";
 
 type BlobbyControlsProps = {
   colorIndex: number;
@@ -128,7 +129,9 @@ export const BlobbyControls = ({
                   max={2}
                   step={0.1}
                   value={activeCustomItem.scale}
-                  onChange={(e) => onCustomScaleChange?.(Number(e.target.value))}
+                  onChange={(e) =>
+                    onCustomScaleChange?.(Number(e.target.value))
+                  }
                 />
               </label>
               <br />
@@ -142,7 +145,9 @@ export const BlobbyControls = ({
                   max={180}
                   step={5}
                   value={activeCustomItem.rotation}
-                  onChange={(e) => onCustomRotationChange?.(Number(e.target.value))}
+                  onChange={(e) =>
+                    onCustomRotationChange?.(Number(e.target.value))
+                  }
                 />
               </label>
             </div>
@@ -192,6 +197,10 @@ export const BlobbyControls = ({
           </div>
         </div>
       )}
+
+      <div className="customize-section">
+        <DownloadButton />
+      </div>
     </div>
   );
 };

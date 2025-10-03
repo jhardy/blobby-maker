@@ -150,10 +150,10 @@ export const hatComponents = [
 
 export const faceFeatureComponents = [
   <div className="empty-option"></div>,
-  <EyeShadow />,
   <Freckles />,
-  <Mole />,
+  <EyeShadow />,
+  // <Mole />,
   <RosyCheeks />,
   <Stash />,
-  <Tears />,
+  // <Tears />,
 ];
