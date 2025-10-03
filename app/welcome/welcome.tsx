@@ -17,25 +17,40 @@ import { BlobbyControls } from "~/components/blobby-controls";
 import { hatConfigs, hatNames } from "~/data/hat-configs";
 import { DownloadButton } from "~/components/download-button";
 import { UploadButton, type UploadType } from "~/components/upload-button";
-import { getCustomItemsManager, type CustomItem } from "~/utils/custom-items-manager";
+import {
+  getCustomItemsManager,
+  type CustomItem,
+} from "~/utils/custom-items-manager";
 import { CustomImage } from "~/components/custom-image";
 import { CustomPanel } from "~/components/custom-panel";
 import { type PositionedCustomItem } from "~/components/custom-overlay";
 
 export const Welcome = () => {
   const [activePanel, setActivePanel] = useState<PanelTypes>("eyes");
-  const [customItems, setCustomItems] = useState<Record<UploadType, CustomItem[]>>({
+  const [customItems, setCustomItems] = useState<
+    Record<UploadType, CustomItem[]>
+  >({
     eyes: [],
     mouths: [],
     hats: [],
     features: [],
     custom: [],
   });
-  const [activeCustomEye, setActiveCustomEye] = useState<CustomItem | null>(null);
-  const [activeCustomMouth, setActiveCustomMouth] = useState<CustomItem | null>(null);
-  const [activeCustomHat, setActiveCustomHat] = useState<CustomItem | null>(null);
-  const [positionedCustomItems, setPositionedCustomItems] = useState<PositionedCustomItem[]>([]);
-  const [activeCustomItemId, setActiveCustomItemId] = useState<string | null>(null);
+  const [activeCustomEye, setActiveCustomEye] = useState<CustomItem | null>(
+    null
+  );
+  const [activeCustomMouth, setActiveCustomMouth] = useState<CustomItem | null>(
+    null
+  );
+  const [activeCustomHat, setActiveCustomHat] = useState<CustomItem | null>(
+    null
+  );
+  const [positionedCustomItems, setPositionedCustomItems] = useState<
+    PositionedCustomItem[]
+  >([]);
+  const [activeCustomItemId, setActiveCustomItemId] = useState<string | null>(
+    null
+  );
 
   const [activeColor, setActiveColor] = useState(0);
   const [activeEye, setActiveEye] = useState(0);
@@ -90,7 +105,7 @@ export const Welcome = () => {
     const manager = getCustomItemsManager();
     const newItem = await manager.addItem(file, type);
 
-    setCustomItems(prev => ({
+    setCustomItems((prev) => ({
       ...prev,
       [type]: [newItem, ...prev[type]],
     }));
@@ -119,7 +134,7 @@ export const Welcome = () => {
           scale: 1,
           rotation: 0,
         };
-        setPositionedCustomItems(prev => [...prev, newItem]);
+        setPositionedCustomItems((prev) => [...prev, newItem]);
         setActiveCustomItemId(newItem.id);
         break;
     }
@@ -127,39 +142,33 @@ export const Welcome = () => {
 
   const handleCustomPositionChange = (x: number, y: number) => {
     if (!activeCustomItemId) return;
-    setPositionedCustomItems(prev =>
-      prev.map(item =>
-        item.id === activeCustomItemId
-          ? { ...item, position: { x, y } }
-          : item
+    setPositionedCustomItems((prev) =>
+      prev.map((item) =>
+        item.id === activeCustomItemId ? { ...item, position: { x, y } } : item
       )
     );
   };
 
   const handleCustomScaleChange = (scale: number) => {
     if (!activeCustomItemId) return;
-    setPositionedCustomItems(prev =>
-      prev.map(item =>
-        item.id === activeCustomItemId
-          ? { ...item, scale }
-          : item
+    setPositionedCustomItems((prev) =>
+      prev.map((item) =>
+        item.id === activeCustomItemId ? { ...item, scale } : item
       )
     );
   };
 
   const handleCustomRotationChange = (rotation: number) => {
     if (!activeCustomItemId) return;
-    setPositionedCustomItems(prev =>
-      prev.map(item =>
-        item.id === activeCustomItemId
-          ? { ...item, rotation }
-          : item
+    setPositionedCustomItems((prev) =>
+      prev.map((item) =>
+        item.id === activeCustomItemId ? { ...item, rotation } : item
       )
     );
   };
 
   const handleRemoveCustomItem = (id: string) => {
-    setPositionedCustomItems(prev => prev.filter(item => item.id !== id));
+    setPositionedCustomItems((prev) => prev.filter((item) => item.id !== id));
     setActiveCustomItemId(null);
   };
   return (
@@ -184,7 +193,6 @@ export const Welcome = () => {
             activeCustomItemId={activeCustomItemId}
             onCustomItemClick={setActiveCustomItemId}
           />
-          <DownloadButton />
           <div className="panels">
             <PanelControl
               onPanelChange={handlePanelChange}
@@ -202,13 +210,13 @@ export const Welcome = () => {
               }}
               customItems={customItems.eyes}
               onCustomItemSelect={handleCustomItemSelect}
-              extraButtons={
-                <UploadButton
-                  onUpload={handleUpload}
-                  activeType="eyes"
-                  className="option-button upload-option"
-                />
-              }
+              // extraButtons={
+              //   <UploadButton
+              //     onUpload={handleUpload}
+              //     activeType="eyes"
+              //     className="option-button upload-option"
+              //   />
+              // }
             />
 
             <PanelPane
@@ -222,13 +230,13 @@ export const Welcome = () => {
               }}
               customItems={customItems.mouths}
               onCustomItemSelect={handleCustomItemSelect}
-              extraButtons={
-                <UploadButton
-                  onUpload={handleUpload}
-                  activeType="mouths"
-                  className="option-button upload-option"
-                />
-              }
+              // extraButtons={
+              //   <UploadButton
+              //     onUpload={handleUpload}
+              //     activeType="mouths"
+              //     className="option-button upload-option"
+              //   />
+              // }
             />
             <PanelPane
               options={hatComponents}
@@ -241,16 +249,16 @@ export const Welcome = () => {
               activeChildrenIndex={activeHat}
               customItems={customItems.hats}
               onCustomItemSelect={handleCustomItemSelect}
-              extraButtons={
-                <UploadButton
-                  onUpload={handleUpload}
-                  activeType="hats"
-                  className="option-button upload-option"
-                />
-              }
+              // extraButtons={
+              //   <UploadButton
+              //     onUpload={handleUpload}
+              //     activeType="hats"
+              //     className="option-button upload-option"
+              //   />
+              // }
             />
 
-            <CustomPanel
+            {/* <CustomPanel
               isActive={activePanel === "custom"}
               customItems={customItems.custom}
               positionedItems={positionedCustomItems}
@@ -258,15 +266,15 @@ export const Welcome = () => {
                 await handleUpload(file, "custom");
               }}
               onItemSelect={handleCustomItemSelect}
-            />
+            /> */}
 
-            {/* <PanelPane
+            <PanelPane
               options={faceFeatureComponents}
               className="face-feature-options"
               isActive={activePanel === "features"}
               handleOptionSelect={setActiveFaceFeature}
               activeChildrenIndex={activeFaceFeature}
-            /> */}
+            />
           </div>
         </div>
 
@@ -284,7 +292,11 @@ export const Welcome = () => {
           onFaceRotationChange={setFaceRotation}
           onFacePosChange={(x, y) => setFacePos({ x, y })}
           onHatColorChange={handleHatColorChange}
-          activeCustomItem={positionedCustomItems.find(item => item.id === activeCustomItemId) || null}
+          activeCustomItem={
+            positionedCustomItems.find(
+              (item) => item.id === activeCustomItemId
+            ) || null
+          }
           onCustomPositionChange={handleCustomPositionChange}
           onCustomScaleChange={handleCustomScaleChange}
           onCustomRotationChange={handleCustomRotationChange}

@@ -46,11 +46,11 @@ export const DownloadButton = ({
       document.body.appendChild(container);
 
       // Wait for styles to be applied
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
 
       // Export with dimensions that accommodate hats
       const dataUrl = await toPng(container, {
-        width: 250,  // 200 + 50 horizontal padding
+        width: 250, // 200 + 50 horizontal padding
         height: 315, // 250 + 65 vertical padding
         pixelRatio: 2,
         backgroundColor: "transparent",
@@ -103,8 +103,8 @@ export const DownloadButton = ({
       ) : (
         <>
           <svg
-            width="20"
-            height="20"
+            width="16"
+            height="16"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
